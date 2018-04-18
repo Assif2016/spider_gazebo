@@ -1,0 +1,99 @@
+<?xml version="1.0"?> 
+<sdf version="1.4">
+<world name="default">
+
+<!-- Ground Plane -->
+<!--include>
+    <uri>model://ground_plane</uri>
+</include-->
+
+<!-- You can also try -->
+
+ <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>11.03 5.66</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>100</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>1000 1000</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            </material>
+        </visual>
+      </link>
+    </model>
+
+<include>
+    <uri>model://sun</uri>
+</include>
+
+<model name="uneven_terrain">
+    <pose>8 0 0  0 0 0</pose>
+    <static>true</static>
+    <link name="uneven terrain">
+        <visual name="visual">
+            <geometry>
+                <mesh>
+
+                    <uri>file:///home/fernandez/catkin_ws/src/spider/spider_description/meshes/mountain2.dae</uri>
+                    <scale> 3 5 1 </scale>
+                </mesh>
+            </geometry>
+        </visual>
+        <collision name="collision">
+            <geometry>
+                <mesh>
+		    <uri>file:///home/fernandez/catkin_ws/src/spider/spider_description/meshes/mountain2.dae</uri>
+                    <scale> 3 5 1 </scale>
+                </mesh>
+            </geometry>
+        </collision>
+        <!--
+        <visual name="visual">
+            <pose> -5 0 0 0 0 -1.57</pose>
+            <geometry>
+                <mesh>
+                    <uri>file://ramp.dae</uri>
+                    <scale> 2 .1 .1 </scale>
+                </mesh>
+            </geometry>
+        </visual>
+        <collision name="collision">
+            <pose> -5 0 0 0 0 -1.57</pose>
+            <geometry>
+                <mesh>
+                    <uri>file://ramp.dae</uri>
+                    <scale> 2 .1 .1 </scale>
+                </mesh>
+            </geometry>
+        </collision>
+        --> 
+    </link>
+</model>
+
+
+</world>
+</sdf>
